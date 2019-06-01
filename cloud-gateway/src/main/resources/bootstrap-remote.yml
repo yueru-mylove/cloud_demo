@@ -1,0 +1,30 @@
+user:
+  name: root
+  pwd: 123456
+hystrix:
+  command:
+    myusers-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+zuul:
+  routes:
+    producer:
+      serviceId: trace-producer
+      path: /producer/**
+      stripPrefix: true
+    consumer:
+      serviceId: trace-consumer
+      path: /consumer/**
+      stripPrefix: true
+  ignored-services: config-server
+  ignore-local-service: true
+trace-producer:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: http://localhost:8001,http://localhost:8000
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100

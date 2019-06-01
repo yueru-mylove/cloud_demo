@@ -1,0 +1,41 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: localhost
+  # nacos 整合zipkin 出现bug，经过zipkin之后回来的服务名变成了zipkin配置的baseurl的DEFAULT_GROUP@@ip,导致nacos无法正常识别，会抛出一个nacosexception，
+  zipkin:
+    base-url: http://localhost:9411
+    discovery-client-enabled: false
+  sleuth:
+    http:
+      enabled: true
+    sampler:
+      probability: 1.0
+    feign:
+      enabled: true
+    web:
+      client:
+        enabled: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        register-enabled: true
+        # 集成spring-cloud-starter-sleuth 及spring-cloud-starter-zipkin时必须要启用该配置，否则会在注册服务时抛出一个NacosException
+        cluster-name: trace-cluster
+      config:
+        # group: NACOS_GROUP
+        file-extension: yaml
+        server-addr: 127.0.0.1:8848
+        enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+# 云端数据
+user:
+  name: admin
+  pwd: admin

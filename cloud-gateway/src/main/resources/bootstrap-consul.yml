@@ -1,0 +1,50 @@
+server:
+  port: 8911
+spring:
+  application:
+    name: gateway-server
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    http:
+      enabled: true
+    sampler:
+      probability: 1.0
+    feign:
+      enabled: true
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        tags: dev
+        health-check-interval: 15s
+        health-check-path: /actuator/health
+        instance-id: ${spring.application.name}:${random.uuid}
+        enabled: true
+        register: true
+        # 服务停止时取消注册
+        deregister: true
+        prefer-ip-address: true
+        health-check-critical-timeout: 30s
+      config:
+        enabled: true
+        prefix: config
+        # 这个配置暂时没用到，有点奇怪，似乎配置了没什么用
+        # default-context: gateway-server
+        format: yaml
+        fail-fast: false
+        watch:
+          enabled: true
+          delay: 10000
+          wait-time: 30
+        data-key: data
+logging:
+  level:
+    org.springframework.cloud: debug
+
+zuul:
+  host:
+    max-total-connections: 200
+  retryable: true
+

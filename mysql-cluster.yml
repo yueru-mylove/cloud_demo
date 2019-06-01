@@ -1,0 +1,8 @@
+version: 1.0.0
+services:
+  mysql:
+    imame: mysql:latest
+    ports:
+      - "3306"
+    networks:
+      -

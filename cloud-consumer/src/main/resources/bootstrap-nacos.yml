@@ -1,0 +1,29 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: trace-consumer
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    http:
+      enabled: true
+    sampler:
+      probability: 1.0
+    feign:
+      enabled: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        register-enabled: true
+        # 继承spring-cloud-starter-sleuth 及spring-cloud-starter-zipkin时必须要启用该配置，否则会在注册服务时抛出一个NacosException
+        cluster-name: tracecluster
+    service-registry:
+      auto-registration:
+        enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
