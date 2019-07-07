@@ -12,6 +12,24 @@ spring:
       probability: 1.0
     feign:
       enabled: true
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.93.219.222/jade?charset=utf8mb4&userssl=false
+    username: root
+    password: a142857#
+    hikari:
+      auto-commit: false
+      maximum-pool-size: 10
+      max-lifetime: 3000
+      idle-timeout: 1000
+  redis:
+    password: miralce_142857*
+    timeout: 3000
+    host: 47.93.219.222
+    port: 6379
+  session:
+    timeout:
+    store-type: redis
 eureka:
   client:
     service-url:
@@ -24,3 +42,7 @@ management:
 user:
   name: root
   pwd: 123456
+mybatis-plus:
+  type-aliases-package: com.voiceai.cloud.bean
+  configuration:
+    map-underscore-to-camel-case: true
