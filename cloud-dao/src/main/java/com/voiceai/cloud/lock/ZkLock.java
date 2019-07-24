@@ -4,7 +4,6 @@ import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -108,7 +107,7 @@ public class ZkLock implements Watcher {
         try {
             Stat exists = zooKeeper.exists(this.currentLock, false);
             if (null != exists) {
-                System.out.println("线程【" + Thread.currentThread().getName() + "】释放锁 " + this.currentLock);
+                System.out.println("线程【" + Thread.currentThread().getName() + "】释放锁 " + this.currentLock + "############################################");
                 zooKeeper.delete(this.currentLock, -1);
                 this.currentLock = null;
             }
