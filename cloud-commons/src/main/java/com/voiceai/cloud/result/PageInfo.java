@@ -1,7 +1,6 @@
 package com.voiceai.cloud.result;
 
 
-
 import java.util.List;
 
 /**

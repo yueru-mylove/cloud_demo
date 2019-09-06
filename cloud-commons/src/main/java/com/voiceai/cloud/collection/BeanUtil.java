@@ -39,8 +39,7 @@ public class BeanUtil {
     public static boolean isEmpty(Object object) {
         if (null == object) {
             return true;
-        }
-        if (object instanceof String) {
+        } else if (object instanceof String) {
             String s = (String) object;
             return Strings.isNullOrEmpty(s);
         }else if (object instanceof List) {

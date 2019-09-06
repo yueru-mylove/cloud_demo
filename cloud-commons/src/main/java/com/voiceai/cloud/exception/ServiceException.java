@@ -57,7 +57,7 @@ public class ServiceException extends RuntimeException {
     }
 
 
-    public Integer getCode() {
+    public Integer BBgetCode() {
         return code;
     }
 

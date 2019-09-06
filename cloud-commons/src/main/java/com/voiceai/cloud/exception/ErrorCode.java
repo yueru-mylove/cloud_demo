@@ -16,8 +16,13 @@ public enum  ErrorCode {
      * 默认捕获异常
      */
     FAILED(-99999, "未知异常，请稍后重试！！"),
-    ;
 
+    INVALID_PARAM(-1, "参数错误"),
+
+    INVALID_REQUEST_METHOD(-2, "请求方式非法"),
+
+    INVALID_UPLOAD_SIZE(-3, "超出最大上传文件限制！"),
+    ;
 
     /**
      * 错误码
