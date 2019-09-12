@@ -31,6 +31,13 @@
             <artifactId>spring-cloud-alibaba-nacos-config</artifactId>
             <version>0.9.0.RELEASE</version>
         </dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>1.5</version>
+        </dependency>
+
     </dependencies>
 
 </project>
