@@ -16,6 +16,7 @@
         <module>cloud-commons</module>
         <module>cloud-dao</module>
         <module>cloud-gateway</module>
+        <module>cloud-integration</module>
     </modules>
 
     <parent>
@@ -53,12 +54,5 @@
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+
 </project>

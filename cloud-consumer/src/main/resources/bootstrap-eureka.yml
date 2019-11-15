@@ -5,6 +5,11 @@ spring:
     name: trace-consumer
   zipkin:
     base-url: http://localhost:9411
+    sender:
+      type: web
+    locator:
+      discovery:
+        enabled: true
   sleuth:
     http:
       enabled: true
@@ -12,6 +17,19 @@ spring:
       probability: 1.0
     feign:
       enabled: true
+    messaging:
+      rabbit:
+        enabled: true
+        remote-service-name: trace-messaging
+    web:
+      enabled: true
+      client:
+        enabled: true
+  rabbitmq:
+    addresses: 106.13.201.230
+    host: rabbit_host
+    username: user
+    password: password
 eureka:
   client:
     service-url:

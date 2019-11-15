@@ -36,6 +36,14 @@ spring:
   session:
     timeout:
     store-type: redis
+  rabbitmq:
+    addresses: 106.13.201.230
+    host: myRabbit
+    username: admin
+    password: MirAcle_4321
+    listener:
+      direct:
+        acknowledge-mode: auto
 eureka:
   client:
     service-url:

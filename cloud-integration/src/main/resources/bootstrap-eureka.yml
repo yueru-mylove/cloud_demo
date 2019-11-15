@@ -1,0 +1,70 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: trace-messaging
+  zipkin:
+    base-url: http://localhost:9411
+    # 开启数据压缩的能力
+    compression:
+      enabled: true
+    locator:
+      discovery:
+        enabled: true
+    sender:
+      type: web
+  sleuth:
+    http:
+      enabled: true
+    sampler:
+      probability: 1.0
+    feign:
+      enabled: true
+    web:
+      enabled: true
+      client:
+        enabled: true
+    messaging:
+      rabbit:
+        enabled: true
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://106.12.97.51:3306/test?charset=utf8mb4&userssl=false
+    username: root
+    password: password
+    hikari:
+      auto-commit: false
+      maximum-pool-size: 10
+      max-lifetime: 3000
+      idle-timeout: 1000
+  redis:
+    timeout: 3000
+    host: 106.12.97.51
+    port: 6379
+  session:
+    timeout:
+    store-type: redis
+  rabbitmq:
+    addresses: 106.13.201.230
+    host: rabbit_host
+    username: user
+    password: password
+    listener:
+      direct:
+        acknowledge-mode: auto
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+user:
+  name: root
+  pwd: 123456
+mybatis-plus:
+  type-aliases-package: com.voiceai.cloud.bean
+  configuration:
+    map-underscore-to-camel-case: true
